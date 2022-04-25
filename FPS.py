@@ -1,6 +1,6 @@
 import cv2
 import time 
-import numpy as np 
+
 
 
 def write_FPS_onscreen(image,prevTime):
