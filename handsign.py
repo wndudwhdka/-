@@ -2,6 +2,7 @@ import cv2
 import mediapipe as mp
 import time 
 import numpy as np 
+from FPS import write_FPS_onscreen
 
 mp_drawing = mp.solutions.drawing_utils
 mp_drawing_styles = mp.solutions.drawing_styles
@@ -84,15 +85,7 @@ with mp_hands.Hands(
           print(len(xcoord_array)-len(ycoord_array))
        
         
-    image = cv2.flip(image, 1)
-    curTime = time.time()
-    sec = curTime - prevTime
-    prevTime = curTime
-    fps = 1/(sec)
-    str = "FPS : %0.1f" % fps
-    cv2.putText(image, str, (0,100), cv2.FONT_HERSHEY_SIMPLEX,3,(255,255,255))
-
-    cv2.imshow('MediaPipe Hands',image)
+    write_FPS_onscreen(image,prevTime)
     
    
     
